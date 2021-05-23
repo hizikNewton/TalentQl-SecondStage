@@ -1,7 +1,6 @@
 {
     "items": [{
-        "name": "item1",
-        "id": 1,
+        "id": "yellow-circle-0",
         "shape": "circle",
         "color": "yellow"
 

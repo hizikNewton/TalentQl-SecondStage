@@ -14,6 +14,10 @@ export const defaultTheme = {
   content:{
     padding:"25px"
   },
+  shapes:{
+    width:"75px",
+    height:"75px"
+  },
   button: {
     animation: {
       transition: "0.3s",
@@ -32,8 +36,13 @@ export const defaultTheme = {
       },
     },
     padding: {
-      main: "0.9rem 3.7rem",
-      small: "0.9rem 1rem",
+      main: "0.9rem 1rem",
+      small: "0.4rem 0.5rem",
+    },
+
+    margin: {
+      main: "0.9rem 1rem",
+      small: "0.4rem",
     },
     typography: {
       fontSize: "1.125rem",

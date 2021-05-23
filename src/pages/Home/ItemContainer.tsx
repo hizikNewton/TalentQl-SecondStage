@@ -1,17 +1,20 @@
 import React from 'react'
-import { IItems } from 'redux/data/types'
+import { IItems } from 'api/data/types'
+import Card from 'components/Card'
+import {Container} from './styles'
 
 interface Props {
     items:IItems
 }
 
 export const ItemContainer:React.FC<Props> = ({items}:Props) => {
+
     return (
-        <div>
-            {items.map(({id,color,shape})=>{
-                return <div>{id}{color},{shape}</div>
+        <Container>
+            {items.map((item,idx)=>{
+                return <Card item={item} key={idx}/>
             })}
-        </div>
+        </Container>
     )
 }
 

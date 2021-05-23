@@ -11,45 +11,37 @@ export const smallScreen = 540;
 export const baseFontColor = "#323232";
 export const baseFontColorSemiTransparent = "rgba(50,50,50,0.6)";
 export const baseFontColorTransparent = "rgba(50,50,50,0.1)";
+export const mainBackgroundColor = "#f5f6fc";
 export const white = "#fff";
 export const black = "#323232";
 export const blue = "rgb(33,18,94)";
-export const blueDark = "#190c4e";
-export const blueLight = "#513CA3";
-export const blueOverlay = `rgba(33,18,94,0.1)`;
-export const blueOverlayDark = `rgba(33,18,94,0.2)`;
 export const gray = "#7d7d7d";
-export const grayMedium = "#c4c4c4";
-export const grayDark = "#323232";
-export const grayLight = "#f1f5f5";
-export const secondaryGrey = "#EBF1F6";
-export const secondaryGreyDark = "#9D9FB1";
-export const secondaryBlue = "#036DFF";
 export const green = "#3ed256";
-export const darkGreen = "#06847B";
 export const turquoise = "#13bebb";
-
+export const red = "red";
+export const yellow = "yellow";
+export const orange = "orange";
 
 // theme colors
 export const theme = {
-    activeMenuOption: darkGreen,
-    bannerBackground: secondaryGrey,
-    bannerEdge: secondaryGreyDark,
-    bannerLink: secondaryBlue,
+    activeMenuOption: red,
     baseFont: baseFontColor,
     baseFontColorSemiTransparent,
     baseFontColorTransparent,
+    mainBackgroundColor,
     dark: black,
     disabled: gray,
-    divider: grayLight,
-    dividerDark: grayMedium,
-    light: grayLight,
+    divider: gray,
     lightFont: gray,
-    listAttributeName: baseFontColorSemiTransparent,
-    listBullet: darkGreen,
     primary: turquoise,
     secondary: blue,
     white,
+    red,
+    green,
+    yellow,
+    blue,
+    orange,
+    gray
   };
   
 

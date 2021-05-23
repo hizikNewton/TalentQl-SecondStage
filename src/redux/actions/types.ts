@@ -1,4 +1,4 @@
-import { IItems } from "redux/data/types";
+import { IItems } from "api/data/types";
 
 export interface IAction {
     type: string;

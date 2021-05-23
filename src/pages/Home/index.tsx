@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import storage, { getSessionStorage } from 'helpers/storage'
-import { generateItem } from 'redux/data'
-import { IItems } from 'redux/data/types'
+import { generateItem } from 'api/data'
+import { IItems } from 'api/data/types'
 import Header from '../../components/Header'
 import { useDispatch } from 'react-redux'
 import { setItemAction } from 'redux/actions'
-import { ItemContainer } from './ItemContainer'
+import { Filters } from './Filters'
+import {Main} from './styles'
 
 interface Props {
     
@@ -37,7 +38,9 @@ const Home:React.FC<Props> = () => {
     return (
         <>
         <Header/>
-        <ItemContainer items={items}/>
+        <Main>
+            <Filters items={items}/>
+        </Main>
         </>
     )
 }

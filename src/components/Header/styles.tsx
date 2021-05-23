@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Head = styled.div`
+export const Head = styled.header`
     border-top:1px solid black;
     display:flex;
     justify-content:space-between;

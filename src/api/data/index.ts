@@ -1,7 +1,10 @@
 import { IItem, IItems } from "./types"
 
-const colors = ["red","green","yellow","blue","orange","grey"]
-const shapes = ["oval","round","triangle","square","rectangle"]
+export const colors = ["red","green","yellow","blue","orange","gray"] as const
+export const shapes = ["oval","round","triangle","square","rectangle"] as const
+
+export type colorType = typeof colors[number]
+export type shapeType = typeof shapes[number]
 
 const AllItem:IItems = []
 export const generateItem = ()=>{
