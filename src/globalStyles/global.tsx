@@ -1,83 +1,77 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle` 
+import { DefaultTheme, media } from ".";
 
-* {
-    margin: 0;
-    padding: 0;
+export const GlobalStyle = createGlobalStyle<{ theme: DefaultTheme }>`
+  html {
     box-sizing: border-box;
-    font-family: Lato, sans-serif, Montserrat, PingFang SC, -apple-system;
-    font-size: 82.5%; /*1rem = 10px*/
-}
+  }
 
-body {
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
     margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    font-size: 1.4rem;
-}
+    min-width: 320px;
+    font-family: ${props => props.theme.typography.baseFontFamily};
+    font-size: ${props => props.theme.typography.baseFontSize};
+    line-height: ${props => props.theme.typography.baseLineHeight};
+    color: ${props => props.theme.colors.baseFont};
+  }
 
-@font-face {
-    font-family: 'Lato';
-    src: local('Lato'), url('./assets/fonts/NotoSansJP.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-}
+  input, textarea, button {
+    font-family: inherit;
+  }
 
+  h1 {
+    font-size: ${props => props.theme.typography.h1FontSize};
+    line-height: ${props => props.theme.typography.h1LineHeight};
 
-.monospace {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
-}
+    ${props => media.smallScreen`
+      font-size: ${props.theme.typography.h2FontSize};
+    `}
+  }
 
-*[role]:focus {
-    outline: none;
-}
+  h3 {
+    font-size: ${props => props.theme.typography.h3FontSize};
+    line-height: 1.7rem;
+  }
 
-.container {
-    width: auto;
-    margin: 0 120px;
-}
+  h4 {
+    font-size: ${props => props.theme.typography.h4FontSize};
+  }
 
-@media (max-width: 1440px) {
-    .container {
-        width: auto;
-        margin: 0 100px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .container {
-        width: auto;
-        margin: 0 45px;
-    }
-}
-
-@media (max-width: 750px) {
-    .container {
-        width: auto;
-        margin: 0 18px;
-    }
-}
-
-a {
+  a {
     text-decoration: none;
-    font-size: inherit;
-    font-weight: 500;
+    font-weight: normal;
     color: inherit;
-}
+  }
 
-ul,li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  } 
+  p {
+    line-height: 1.5rem;
+  }
+
   button {
+    border: none;
+    background-color: transparent;
     cursor: pointer;
-    *{
-      pointer-events:none;
+    outline: none;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  #root,
+  #__next {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+
+    & > div:first-of-type {
+      flex: 1;
     }
   }
 `;

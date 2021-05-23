@@ -1,1 +1,3 @@
-export {default as GlobalStyles} from "./global";
+export * from "./themes";
+export * from "./media";
+export * from "./global";

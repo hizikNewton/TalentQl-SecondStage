@@ -2,7 +2,8 @@ import Routers from './routes'
 import {Provider} from 'react-redux'
 import { rootReducer } from './redux/reducers';
 import { createStore} from 'redux'
-import {GlobalStyles} from "./globalStyles";
+import {defaultTheme, GlobalStyle} from "./globalStyles";
+import { ThemeProvider } from 'styled-components';
 
 export const store = createStore(rootReducer,
   (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -11,8 +12,10 @@ export const store = createStore(rootReducer,
 const App = () => {
   return (
     <Provider store={store}>
-        <GlobalStyles/>
-       <Routers />
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyle/>
+        <Routers />
+       </ThemeProvider>
     </Provider>
   )
 }

@@ -1,0 +1,9 @@
+{
+    "items": [{
+        "name": "item1",
+        "id": 1,
+        "shape": "circle",
+        "color": "yellow"
+
+    }]
+}
