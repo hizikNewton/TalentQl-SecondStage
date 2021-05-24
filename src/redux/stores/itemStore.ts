@@ -1,7 +1,10 @@
 import { IItemStore } from "./interfaces";
 
 export const itemStore:IItemStore = {
-    items: []
+    items: [],
+    filters:{
+      selectedShapes:[],
+      selectedColors:[]}
   };
 
 

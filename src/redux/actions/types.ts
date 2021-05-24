@@ -1,7 +1,6 @@
-import { IItems } from "api/data/types";
+import { Ifilters, IItems } from "api/data/types";
 
 export interface IAction {
     type: string;
-    payload?: IItems
+    payload?: IItems|Ifilters
   }
-  

@@ -8,7 +8,8 @@ export const setSessionStorage = (str: string, data: unknown) => {
   };
   
 const storageName = {
-    items:'items-storage'
+    items:'items-storage',
+    filters:'filter-storage'
 }
 
 export default storageName
