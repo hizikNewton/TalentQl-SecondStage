@@ -18,3 +18,22 @@ export const selectAllItemAction = (selectedColors:selectedColors,selectedShapes
       }
     }
 }
+
+export const filterShapeAction = (selectedShapes:selectedShapes)=>{
+  return {
+    type:itemAction.FILTER_SHAPE,
+    payload:{
+          selectedShapes
+      }
+    }
+}
+
+
+export const filterColorAction = (selectedColors:selectedColors)=>{
+  return {
+    type:itemAction.FILTER_COLOR,
+    payload:{
+          selectedColors
+      }
+    }
+}

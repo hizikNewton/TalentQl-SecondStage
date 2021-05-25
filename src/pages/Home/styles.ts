@@ -16,10 +16,10 @@ export const ShapeOption = styled.button`
 `
 export const ColorOption = styled.button<{color:colorType}>`
     border-radius:50%;
-    border:1px solid black;
+    border:3px solid transparent;
     margin:${props=>props.theme.button.margin.small};
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
     background-color:${props=>props.theme.colors[props.color]};
     &:hover {
         background-color:${props=>props.theme.button.colors.primary.background};

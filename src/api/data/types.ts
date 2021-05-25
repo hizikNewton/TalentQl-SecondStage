@@ -7,8 +7,8 @@ export interface IItem {
 }
 
 export interface Ifilters {
+    selectedShapes:selectedShapes,
     selectedColors:selectedColors
-    selectedShapes:selectedShapes
 }
 
 export type IItems = Array<IItem>

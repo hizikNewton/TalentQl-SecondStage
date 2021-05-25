@@ -1,4 +1,5 @@
-import { IItems } from "api/data/types";
+
+import {Ifilters, IItems} from "api/data/types";
 import storage,{ getSessionStorage, setSessionStorage } from "helpers/storage";
 import { IAction, itemAction} from "redux/actions";
 import { IItemStore, itemStore } from "redux/stores";
@@ -14,12 +15,9 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
 
     switch (action.type) {
       case itemAction.SET_ITEM:{
-        const new_storage = {...item_storage}
-        const newState = {...new_storage,...action.payload}
+        const newState = {...item_storage,...action.payload}
         handleSetSessionStorage('items',newState);
-        console.log('pl',action.payload)
-        console.log('yo',state)
-        return Object.assign({},{...state},{items:action.payload as IItems} );
+        return Object.assign({},state,{items:action.payload} );
       }
 
       case itemAction.SELECT_ALL_ITEMS:{
@@ -29,6 +27,20 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
         return Object.assign({},state,{filters:action.payload});
       }
 
+      case itemAction.FILTER_COLOR:{
+        const {selectedColors} = action.payload as Ifilters
+        const userSelected = selectedColors.map(color=>color)
+        const newState = state.items.filter(({color})=>{return userSelected.includes(color)})
+        return Object.assign({},state,{items:newState});
+      }
+
+      case itemAction.FILTER_SHAPE:{
+        const {selectedShapes} = action.payload as Ifilters 
+        const items:IItems= Object.values(item_storage)
+        const userSelected = selectedShapes.map(i=>i) 
+        const newState = items.filter(({shape})=>{return userSelected.includes(shape)})
+        return Object.assign({},state,{items:newState});
+      }
     default:
       return state;
   }
