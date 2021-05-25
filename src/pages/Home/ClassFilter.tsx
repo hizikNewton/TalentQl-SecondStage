@@ -1,11 +1,11 @@
-import { colors, shapes, shapeType } from 'api/data';
+import { colors, colorType, shapes, shapeType } from 'api/data';
 import {  selectedColors, selectedShapes } from 'api/data/types';
 import React, { Component } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from 'redux/stores'
 import { ItemContainer } from './ItemContainer';
 import * as S from './styles'
-import { filterShapeAction } from 'redux/actions'
+import { filterShapeAction,filterColorAction } from 'redux/actions'
 
 interface Props extends PropFromRedux {
 }
@@ -31,11 +31,12 @@ class ClassFilter extends Component<Props, State> {
     }
 
 componentDidMount(){
-    this.shapeRefs.forEach(shapeRef=>shapeRef!.style.backgroundColor='blue')
-    this.colorRefs.forEach(colorRef=>colorRef!.style.boxShadow='0 0 12px');
+    this.colorRefs.forEach(colorRef=>colorRef!.style.borderColor='#bad1fd');
+    this.shapeRefs.forEach(shapeRef=>shapeRef!.style.backgroundColor='#bad1fd')
+    this.colorRefs.forEach(colorRef=>colorRef!.style.boxShadow='0 0 10px');
     }
     handleClickShape =(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
-        e.currentTarget.style.backgroundColor=(e.currentTarget.style.backgroundColor==='blue')?'':'blue';
+        e.currentTarget.style.backgroundColor=(e.currentTarget.style.backgroundColor==='')?'#bad1fd':'';
         const select = e.currentTarget.id as shapeType
         let newSelectedShapeArray = new Set([...this.state.selectedShapeState])
         if(newSelectedShapeArray.has(select)){
@@ -47,7 +48,21 @@ componentDidMount(){
         }
        
     }
-    handleClickColor = ()=>{}
+    handleClickColor =(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
+        e.currentTarget.style.boxShadow=(e.currentTarget.style.boxShadow==='')?'0 0 10px':'';
+        e.currentTarget.style.borderColor=(e.currentTarget.style.borderColor==='')?'aliceblue':'';
+        const select = e.currentTarget.id as colorType
+        let newSelectedColorArray = new Set([...this.state.selectedColorState])
+        if(newSelectedColorArray.has(select)){
+            newSelectedColorArray.delete(select)
+            this.setState({selectedColorState:Array.from(newSelectedColorArray)}, ()=>this.props.filterColorAction(this.state.selectedColorState))
+        }else{
+            newSelectedColorArray.add(select)
+            this.setState({selectedColorState:Array.from(newSelectedColorArray)},()=>this.props.filterColorAction(this.state.selectedColorState))
+        }
+       
+    }
+
     render() {
         return (
             <div>
@@ -68,14 +83,14 @@ componentDidMount(){
 
 function mapStateToProps(state:RootState){
     const {items,filters} = state.itemStore
-    console.log(items)
     return {
         filters,
         items
     }
 }
 const mapDispatchToProps={
-    filterShapeAction
+    filterShapeAction,
+    filterColorAction
 }
 const connector = connect(mapStateToProps,mapDispatchToProps)
 type PropFromRedux = ConnectedProps<typeof connector>

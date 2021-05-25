@@ -12,8 +12,8 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
 
     const item_storage = getSessionStorage(storage.items);
     const filter_storage = getSessionStorage(storage.filters);
-
     switch (action.type) {
+      
       case itemAction.SET_ITEM:{
         const newState = {...item_storage,...action.payload}
         handleSetSessionStorage('items',newState);
@@ -30,14 +30,15 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
       case itemAction.FILTER_COLOR:{
         const {selectedColors} = action.payload as Ifilters
         const userSelected = selectedColors.map(color=>color)
-        const newState = state.items.filter(({color})=>{return userSelected.includes(color)})
+        const items:IItems= Object.values(item_storage)
+        const newState = items.filter(({color})=>{return userSelected.includes(color)})
         return Object.assign({},state,{items:newState});
       }
 
       case itemAction.FILTER_SHAPE:{
         const {selectedShapes} = action.payload as Ifilters 
+        const userSelected = selectedShapes.map(shape=>shape)
         const items:IItems= Object.values(item_storage)
-        const userSelected = selectedShapes.map(i=>i) 
         const newState = items.filter(({shape})=>{return userSelected.includes(shape)})
         return Object.assign({},state,{items:newState});
       }
