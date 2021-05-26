@@ -36,6 +36,7 @@ async function handleResponse(response: Response) {
         }
         console.log('correct')
         history.push('/home')
+        history.go(0)
     });
         return response;
 }
