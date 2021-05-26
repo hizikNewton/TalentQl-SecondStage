@@ -46,6 +46,12 @@ handleReset = ()=>{
     this.props.filterShapeAction(this.state.selectedShapeState)
 }
 
+handleColorReset = ()=>{
+    this.colorRefs.slice(0,this.shapeRefs.length).forEach(colorRef=>{colorRef?.click()
+    })
+    this.props.filterColorAction(this.state.selectedColorState)
+}
+
     handleClickShape =(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
         e.currentTarget.style.backgroundColor=(e.currentTarget.style.backgroundColor==='')?'#bad1fd':'';
         const select = e.currentTarget.id as shapeType

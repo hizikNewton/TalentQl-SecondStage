@@ -3,6 +3,8 @@ import {styled} from "globalStyles";
 
 export const Main = styled.main`
     background-color:${props=>props.theme.colors.mainBackgroundColor};
+    padding: 0 25px;
+
 `
 
 export const ShapeOption = styled.button`
