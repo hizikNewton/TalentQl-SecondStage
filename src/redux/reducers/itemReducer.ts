@@ -22,9 +22,22 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
 
       case itemAction.SELECT_ALL_ITEMS:{
         let new_storage = {...filter_storage}
+        const payload = action.payload as Ifilters
         const newState= {...new_storage,...action.payload}
         handleSetSessionStorage('filters',newState);
-        return Object.assign({},state,{filters:action.payload});
+        if(payload.selectedColors && payload.selectedShapes){
+          return Object.assign({},state,{filters:action.payload});
+        }
+        else if(payload.selectedColors){
+          return Object.assign({},state,{filters:{selectedColors:action.payload}});
+        }
+        else if(payload.selectedShapes){
+          console.log(action.payload)
+          return Object.assign({},state,{filters:{selectedShapes:action.payload}});
+        }
+        else{
+          return state
+        }
       }
 
       case itemAction.FILTER_COLOR:{
@@ -41,6 +54,10 @@ export const itemReducer = (state = itemStore,action:IAction):IItemStore => {
         const items:IItems= Object.values(item_storage)
         const newState = items.filter(({shape})=>{return userSelected.includes(shape)})
         return Object.assign({},state,{items:newState});
+      }
+
+      case itemAction.UPDATE_TITLE:{
+        return Object.assign({},state,{title:action.payload})
       }
     default:
       return state;

@@ -6,7 +6,8 @@ export interface IItemStore{
     filters:{
         selectedShapes:Array<shapeType>
         selectedColors:Array<colorType>
-    }
+    },
+    title:string
 
 }
 

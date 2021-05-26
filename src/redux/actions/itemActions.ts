@@ -9,7 +9,7 @@ export const setItemAction = (items:IItems) => {
     }
 }
 
-export const selectAllItemAction = (selectedColors:selectedColors,selectedShapes:selectedShapes)=>{
+export const selectAllItemAction = (selectedColors?:selectedColors,selectedShapes?:selectedShapes)=>{
   return {
     type:itemAction.SELECT_ALL_ITEMS,
     payload:{
@@ -36,4 +36,12 @@ export const filterColorAction = (selectedColors:selectedColors)=>{
           selectedColors
       }
     }
+}
+
+export const updateTitleAction = (title:string)=>{
+ return{ 
+    type:itemAction.UPDATE_TITLE,
+    payload:title
+  }
+
 }

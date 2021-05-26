@@ -4,7 +4,9 @@ export const itemStore:IItemStore = {
     items: [],
     filters:{
       selectedShapes:[],
-      selectedColors:[]}
+      selectedColors:[]
+    },
+    title:'All Items'
   };
 
 
