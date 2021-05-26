@@ -2,14 +2,22 @@ import { FC, lazy, Suspense } from 'react'
 import { BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
 import Page from '../components/Page'
 
+
+const Login = lazy(() => import('../pages/Auth/Login/Login'))
 const Home = lazy(() => import('../pages/Home'))
 
 const Containers: CustomRouter.Route[] = [
     {
       name: 'Home',
-      path: '/',
+      path: '/home',
       exact: true,
       comp: Home,
+    },
+    {
+      name: 'Login',
+      path: '/',
+      exact: true,
+      comp: Login,
     },
    
 ]

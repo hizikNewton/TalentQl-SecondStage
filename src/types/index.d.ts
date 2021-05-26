@@ -10,3 +10,17 @@ declare namespace CustomRouter {
 
 
 const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+ interface IUser{
+    id?:number,
+    fullname:string
+    username:string,
+    password:string,
+    token?:string
+
+}
+
+interface Action<T>{
+  type:string;
+  payload:|T|Partial<T>
+}

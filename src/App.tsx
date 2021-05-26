@@ -1,13 +1,17 @@
 import Routers from './routes'
 import {Provider} from 'react-redux'
 import { rootReducer } from './redux/reducers';
-import { createStore} from 'redux'
 import {defaultTheme, GlobalStyle} from "./globalStyles";
 import { ThemeProvider } from 'styled-components';
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
+import {applyMiddleware, createStore} from 'redux'
+import { configureFakeBackend } from 'helpers/fake-bakend';
 
-export const store = createStore(rootReducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__());
+
+export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)));
+
+configureFakeBackend();
 
 const App = () => {
   return (
