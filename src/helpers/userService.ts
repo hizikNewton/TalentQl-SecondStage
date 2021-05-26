@@ -35,7 +35,7 @@ async function handleResponse(response: Response) {
             return Promise.reject(error);
         }
         console.log('correct')
-        history.go(0)
+        history.push('/home')
     });
         return response;
 }
