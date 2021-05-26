@@ -1,3 +1,6 @@
+import createHistory from 'history/createBrowserHistory'
+const history = createHistory();
+
 export const userService = {
     login,
     logout,
@@ -12,21 +15,16 @@ async function login(username: string, password: string) {
 
     const response = await fetch(`/users/authenticate`, requestOptions);
     const user = await handleResponse(response);
-    // store user details and jwt token in local storage to keep user logged in between page refreshes
-    localStorage.setItem('user', JSON.stringify(user));
     return user;
 }
 
 function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
 }
 async function handleResponse(response: Response) {
 
     response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {
-            console.log('ee',response)
             if (response.status === 401) {
                 const location  = new Location()
                 logout();
@@ -36,6 +34,8 @@ async function handleResponse(response: Response) {
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
+        console.log('correct')
+        history.go(0)
     });
         return response;
 }
